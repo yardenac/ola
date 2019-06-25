@@ -253,9 +253,6 @@ char *FastInt32ToBuffer(int32_t i, char* buffer) {
 }
 
 char *FastHexToBuffer(int i, char* buffer) {
-  GOOGLE_CHECK(i >= 0)
-      << "FastHexToBuffer() wants non-negative integers, not " << i;
-
   static const char *hexdigits = "0123456789abcdef";
   char *p = buffer + 21;
   *p-- = '\0';
@@ -433,7 +430,6 @@ char* FastUInt64ToBufferLeft(uint64_t u64, char* buffer) {
   u = u64 - (top_11_digits * 1000000000);
 
   digits = u / 10000000;  // 10,000,000
-  GOOGLE_DCHECK_LT(digits, 100);
   ASCII_digits = two_ASCII_digits[digits];
   buffer[0] = ASCII_digits[0];
   buffer[1] = ASCII_digits[1];
