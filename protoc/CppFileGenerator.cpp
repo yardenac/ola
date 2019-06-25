@@ -223,9 +223,9 @@ void FileGenerator::GenerateBuildDescriptors(Printer* printer) {
     printer->Print(
       "namespace {\n"
       "\n"
-      "GOOGLE_PROTOBUF_DECLARE_ONCE(protobuf_AssignDescriptors_once_);\n"
+      "::google::protobuf::internal::once_flag protobuf_AssignDescriptors_once_;\n"
       "inline void protobuf_AssignDescriptorsOnce() {\n"
-      "  ::google::protobuf::GoogleOnceInit(&protobuf_AssignDescriptors_once_,"
+      "  ::google::protobuf::internal::call_once(protobuf_AssignDescriptors_once_,"
       "\n"
       "                 &$assigndescriptorsname$);\n"
       "}\n"
